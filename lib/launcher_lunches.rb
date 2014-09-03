@@ -2,15 +2,15 @@ require 'pry'
 
 def most_expensive
   max = {}
-  restaurants.each do |restaurant|
-    restaurant[:meals][:breakfast].each do |name, values|
+  restaurants.each do |restaurant, menu|
+    menu[:meals][:breakfast].each do |name, values|
       max[values[:price_in_cents]] = name
     end
-    restaurant[:meals][:lunch].each do |name, values|
+    menu[:meals][:lunch].each do |name, values|
       max[values[:price_in_cents]] = name
     end
   end
-  max
+  max.max_by{|price, item| price}[1]
 end
 
 def one_of_everything_from(name)
