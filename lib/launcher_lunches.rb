@@ -14,7 +14,18 @@ def most_expensive
 end
 
 def one_of_everything_from(name)
-  "SOLUTION GOES HERE"
+  price = 0
+  restaurants.each do |restaurant, menu|
+    if restaurant == name
+      menu[:meals][:breakfast].each do |name, values|
+        price += values[:price_in_cents]
+      end
+      menu[:meals][:lunch].each do |name, values|
+        price += values[:price_in_cents]
+      end
+    end
+  end
+  price * 0.01
 end
 
 def monthly_egg_count
