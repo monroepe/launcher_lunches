@@ -153,5 +153,3 @@ def restaurants
   }
 end
 
-max = most_expensive
-binding.pry
