@@ -54,7 +54,20 @@ def monthly_egg_count
 end
 
 def lactose_free_items
-  "SOLUTION GOES HERE"
+  lactose_free = []
+   restaurants.each do |restaurant, menu|
+    menu[:meals][:breakfast].each do |name, values|
+      if !values[:ingredients].include?("cheese")
+        lactose_free << name
+      end
+    end
+    menu[:meals][:lunch].each do |name, values|
+      if !values[:ingredients].include?("cheese")
+        lactose_free << name
+      end
+    end
+  end
+  lactose_free
 end
 
 
