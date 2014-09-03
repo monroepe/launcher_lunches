@@ -29,7 +29,28 @@ def one_of_everything_from(name)
 end
 
 def monthly_egg_count
-  "SOLUTION GOES HERE"
+  egg_count = []
+  restaurants.each do |restaurant, menu|
+    hours = menu[:hours]
+    eggs = 0
+    menu[:meals][:breakfast].each do |name, values|
+      values[:ingredients].each do |item|
+        if item == "eggs"
+          eggs += 2
+        end
+      end
+    end
+    menu[:meals][:lunch].each do |name, values|
+      values[:ingredients].each do |item|
+        if item == "eggs"
+          eggs += 2
+        end
+      end
+    end
+    eggs = ((eggs * 8) * hours) * 30
+    egg_count << eggs
+  end
+  egg_count.reduce(:+)
 end
 
 def lactose_free_items
